@@ -1,4 +1,4 @@
-window.alert('Chosse range of article between 1 to 300')
+window.alert('Chose range of article between 1 to 300')
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
