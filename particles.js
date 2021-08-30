@@ -34,10 +34,10 @@ canvas.addEventListener('click', function(event){
 
 // on page load particle will start visual
 window.addEventListener('load', function(event){
-    mouse.y = canvas.height/2;
-    mouse.x = canvas.width/2;
-    for(let i = 0; i <600; i++){
-        particlesArray.push(new particle())
+    mouse.x = event.x;
+    mouse.y = event.y;
+    for(let i = 0; i <1300; i++){
+        particlesArray.push(new particlee())
     } 
 });
 // on mouse move particle will start visual
@@ -57,6 +57,35 @@ class particle{
         this.y = mouse.y;
         // this.x = Math.random()*canvas.width;
         // this.y = Math.random()*canvas.height;
+        this.size = Math.random() * 15+1;
+        this.speedX = Math.random ()* 3-1.5;
+        this.speedY = Math.random() * 3-1.5;
+        this.color = 'hsl('+ hue +', 100%, 50%)'
+    }
+    update(){
+        this.x+= this.speedX;
+        this.y += this.speedY;
+        if(this.size>0.2){
+            this.size-=0.1;
+        }
+    }
+    draw(){
+        ctx.fillStyle = this.color
+        // ctx.strokeStyle = 'white'
+        ctx.lineWidth ='5';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2)
+        // ctx.stroke();
+        ctx.fill()
+    }
+    
+}
+
+
+class particlee{
+    constructor(){
+        this.x = Math.random()*canvas.width;
+        this.y = Math.random()*canvas.height;
         this.size = Math.random() * 15+1;
         this.speedX = Math.random ()* 3-1.5;
         this.speedY = Math.random() * 3-1.5;
